@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Tamagotchi_Game.Core.Interfaces
 {
-    internal class ISleep
+    public interface ISleep
     {
+        void PetSleep();
     }
 }

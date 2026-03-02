@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tamagotchi_Game.Core.Interfaces
+namespace Tamagotchi_Game.Core.Enums
 {
-    public interface IPlay
+    public enum TypeFood
     {
-        void PetPlay();
+        Snack,
+        Meal,
+        Drink
     }
 }
