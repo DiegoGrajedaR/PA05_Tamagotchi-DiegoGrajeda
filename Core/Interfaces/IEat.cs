@@ -9,6 +9,6 @@ namespace Tamagotchi_Game.Core.Interfaces
 {
     public interface IEat
     {
-        void PetEat(AFood food);
+        void PetEat(Food food);
     }
 }

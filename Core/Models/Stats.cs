@@ -10,10 +10,12 @@ namespace Tamagotchi_Game.Core.Models
     {
         public int LvlHungry { get; set; }
         public int LvlEnergy { get; set; }
-        public int LvlHealthy { get; }
+        public int LvlHealthy => (LvlHungry + LvlEnergy) / 2;
 
-        public Stats(int lvlHungry, int lvlEnergy, int lvlHealthy) { 
-        
+        public Stats(int lvlHungry, int lvlEnergy) 
+        {
+            LvlHungry = lvlHungry;
+            LvlEnergy = lvlEnergy;
         }
 
     }

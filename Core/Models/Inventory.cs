@@ -8,9 +8,14 @@ namespace Tamagotchi_Game.Core.Models
 {
     public class Inventory
     {
-        public AItem[] ItemsInventory { get; set; }
+        public AItem[] ItemsInventory { get; private set; }
 
-        public Inventory (AItem[] itemsInventory) { }
+        public Inventory () 
+        {
+            ItemsInventory = new AItem[0];
+        }
 
+        public void AddItem(AItem item) { }
+        public void RemoveItem(AItem item) { }
     }
 }

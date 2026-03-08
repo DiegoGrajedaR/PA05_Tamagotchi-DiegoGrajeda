@@ -24,7 +24,7 @@ namespace Tamagotchi_Game.Core.Models
            
         }
 
-        public override void PetEat(AFood food)
+        public override void PetEat(Food food)
         {
             
         }
