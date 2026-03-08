@@ -9,11 +9,11 @@ namespace Tamagotchi_Game.Core.Models
 {
     public class Meal : Food
     {
-        public Meal(string name, int value, int nutritionalValue) : base(name, value, 40) { }
+        public Meal(string name, int value) : base(name, value, 30) { }
 
         public override void Use(APet pet)
         {
-            pet.PetStats.LvlHungry = Math.Min(100, pet.PetStats.LvlHungry + NutritionalValue);
+            pet.PetStats.LvlHungry = Math.Min(100, pet.PetStats.LvlHungry + 30);
             Console.WriteLine($"Has donat de menjar a {pet.Name} un {Name} (Meal) 🍖.");
         }
     }

@@ -9,11 +9,11 @@ namespace Tamagotchi_Game.Core.Models
 {
     public class Snack : Food
     {
-        public Snack(string name, int value, int nutritionalValue) : base(name, value, 15) { }
+        public Snack(string name, int value) : base(name, value, 15) { }
 
         public override void Use(APet pet) 
         {
-            pet.PetStats.LvlHungry = Math.Min(100, pet.PetStats.LvlHungry + NutritionalValue);
+            pet.PetStats.LvlHungry = Math.Min(100, pet.PetStats.LvlHungry + 15);
             pet.NumSnacks++;
 
             if (pet.NumSnacks >= 5)

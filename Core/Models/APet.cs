@@ -26,10 +26,12 @@ namespace Tamagotchi_Game.Core.Models
         {
             if (PetStats.LvlHealthy <= 20) PetState = EmotionalState.Sick;
             
-            else if (PetStats.LvlEnergy <= 40) PetState = EmotionalState.Tired;
+            else if (PetStats.LvlEnergy <= 30) PetState = EmotionalState.Tired;
             
             else if (PetStats.LvlHungry <= 50) PetState = EmotionalState.Angry;
-            
+
+            else if (PetStats.LvlEnergy == 60 && PetStats.LvlHungry == 60) PetState = EmotionalState.Sad;
+
             else if (NumSnacks < 5) PetState = EmotionalState.Happy;
             
 
