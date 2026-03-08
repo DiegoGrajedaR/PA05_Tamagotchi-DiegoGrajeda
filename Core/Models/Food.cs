@@ -8,18 +8,12 @@ using Tamagotchi_Game.Core.Enums;
 
 namespace Tamagotchi_Game.Core.Models
 {
-    public class Food : AItem
+    public abstract class Food : AItem
     {
         public int NutritionalValue { get; set; }
 
-        public TypeFood FoodType { get; set; }
+        public Food(string name, int value, int nutritionalValue) : base(name, value) { }
 
-
-        public Food(string name, int value, int nutritionalValue, TypeFood foodType) : base(name, value) { }
-
-        public override void Use()
-        {
-            throw new NotImplementedException();
-        }
+        public override void Use(APet pet) { }
     }
 }

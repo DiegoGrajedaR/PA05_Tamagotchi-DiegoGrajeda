@@ -10,23 +10,20 @@ namespace Tamagotchi_Game.Core.Models
 {
     public class Dog : APet
     {
-        public string[] SpritesDog { get; set; }
         public Dog(string name, EmotionalState petState, Stats petStats, bool isAlive) : base(name, petState, petStats, isAlive)
         { }
 
-        public override void PetPlay()
+        public override string GetSprites(EmotionalState petState)
         {
-
-        }
-
-        public override void PetSleep()
-        {
-
-        }
-
-        public override void PetEat(Food food)
-        {
-
+            return petState switch
+            {
+                EmotionalState.Happy => " /^ ^\\\n" + "/ 0 0 \\\n" + "V\\ Y /V\n" + " / v \\\n" + " |    \\\n" + " || (__V",
+                EmotionalState.Sad => " /^ ^\\\n" + "/ ╥ ╥ \\\n" + "V\\ Y /V\n" + " / ^ \\\n" + " |    \\\n" + " || (__V",
+                EmotionalState.Angry => " /^ ^\\\n" + "/ ಠ ಠ\\\n" + "V\\ Y /V\n" + " / ^ \\\n" + " |    \\\n" + " || (__V",
+                EmotionalState.Tired => " /^ ^\\\n" + "/ _ _\\ Zzz\n" + "V\\ Y /V\n" + " / ^ \\\n" + " |    \\\n" + " || (__V",
+                EmotionalState.Sick => " /^ ^\\\n" + "/ x x\\\n" + "V\\ Y /V\n" + " / ^ \\\n" + " |    \\\n" + " || (__V"
+            };
+            
         }
     }
 }

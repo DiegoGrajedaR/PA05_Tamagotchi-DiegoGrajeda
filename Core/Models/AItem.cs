@@ -9,12 +9,16 @@ namespace Tamagotchi_Game.Core.Models
 {
     public abstract class AItem
     {
-        protected string Name;
-        protected int Value;
+        public string Name { get; protected set; }
+        public int Value { get; protected set; }
 
-        protected AItem(string name, int value) { }
+        protected AItem(string name, int value) 
+        {
+            Name = name;
+            Value = value;
+        }
 
 
-        public abstract void Use();
+        public abstract void Use(APet pet);
     }
 }

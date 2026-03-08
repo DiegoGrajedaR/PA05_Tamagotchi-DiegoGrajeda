@@ -11,10 +11,10 @@ namespace Tamagotchi_Game.UI
     {
         //Constants metodes PetPlay
 
-        public static string MsgPetTired(string name) => $"La teva mascota {name} esta massa cansada i no pot jugar.";
-        public static string MsgPetSick(string name) => $"{name} es troba malalt i no pot jugar. (Potser necessita atenció especial)";
-        public static string MsgPetSad(string name) => $"La teva mascota {name} esta trista potser no vol jugar.";
+        public static string MsgPetTired(string name) => $"💤 La teva mascota {name} esta massa cansada i no pot jugar.";
+        public static string MsgPetSick(string name) => $"🤒 {name} es troba malalt i no pot jugar. (Potser necessita atenció especial)";
+        public static string MsgPetSad(string name) => $" 🥺 La teva mascota {name} està trista potser no vol jugar.";
         public static string MsgPetAngry(string name) => $"😠 La teva mascota {name} està enfadada amb tu! No vol jugar.";
-        public static string MsgPetHappy(string name) => $"😊 {name} esta content i radiant.";
+        public static string MsgPetHappy(string name) => $"😊 {name} esta content i radiant. Ha jugat pero ha gastat energía y te una mica de gana.";
     }
 }
