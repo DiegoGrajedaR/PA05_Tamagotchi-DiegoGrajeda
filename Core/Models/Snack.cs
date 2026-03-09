@@ -19,12 +19,12 @@ namespace Tamagotchi_Game.Core.Models
             if (pet.NumSnacks >= 5)
             {
                 pet.PetState = EmotionalState.Sick;
-                Console.WriteLine($"Oh no! Sembla que {pet.Name} ha menjat massa snacks!");
+                Console.WriteLine($"Oh no! It seems that {pet.Name} has eaten too many snacks!");
             }
             else 
             {
                 pet.PetState = EmotionalState.Happy;
-                Console.WriteLine($"{pet.Name} ha menjat {Name} (Snack) 🥓. Ara està content.");
+                Console.WriteLine($"{pet.Name} ate {Name} (Snack) 🥓. Now it is happy.");
             }
 
         }

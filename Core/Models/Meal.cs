@@ -14,7 +14,7 @@ namespace Tamagotchi_Game.Core.Models
         public override void Use(APet pet)
         {
             pet.PetStats.LvlHungry = Math.Min(100, pet.PetStats.LvlHungry + 30);
-            Console.WriteLine($"Has donat de menjar a {pet.Name} un {Name} (Meal) 🍖.");
+            Console.WriteLine($"You gave {pet.Name} a {Name} (Meal) 🍖.");
         }
     }
 }

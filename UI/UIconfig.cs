@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Tamagotchi_Game.UI
 {
@@ -11,10 +12,10 @@ namespace Tamagotchi_Game.UI
     {
         //Constants metodes PetPlay
 
-        public static string MsgPetTired(string name) => $"💤 La teva mascota {name} esta massa cansada i no pot jugar.";
-        public static string MsgPetSick(string name) => $"🤒 {name} es troba malalt i no pot jugar. (Potser necessita atenció especial)";
-        public static string MsgPetSad(string name) => $" 🥺 La teva mascota {name} està trista potser no vol jugar.";
-        public static string MsgPetAngry(string name) => $"😠 La teva mascota {name} està enfadada amb tu! No vol jugar.";
-        public static string MsgPetHappy(string name) => $"😊 {name} esta content i radiant. Ha jugat pero ha gastat energía y te una mica de gana.";
+        public static string MsgPetTired(string name) => $"💤 Your pet {name} is too tired and cannot play.";
+        public static string MsgPetSick(string name) => $"🤒 {name} is sick and cannot play. (It might need special care)";
+        public static string MsgPetSad(string name) => $"🥺 Your pet {name} is sad and may not want to play.";
+        public static string MsgPetAngry(string name) => $"😠 Your pet { name } is angry with you! It doesn't want to play.";
+        public static string MsgPetHappy(string name) => $"😊 {name} is happy and cheerful. It played but used some energy and is a little hungry.";
     }
 }

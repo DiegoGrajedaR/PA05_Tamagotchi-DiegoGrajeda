@@ -38,7 +38,7 @@ namespace Tamagotchi_Game.Core.Models
             if (PetStats.LvlHealthy == 0) 
             {
                 IsAlive = false;
-                Console.WriteLine($"💀 {Name} ha mort. GAME OVER!");
+                Console.WriteLine($"💀 {Name} died. GAME OVER!");
             }
         }
 
@@ -77,7 +77,7 @@ namespace Tamagotchi_Game.Core.Models
         public virtual void PetSleep() 
         {
             PetStats.LvlEnergy = Math.Min(100, PetStats.LvlEnergy + 40);
-            Console.WriteLine($"💤{Name} ha dormit y ha recuperat energia.");
+            Console.WriteLine($"💤 {Name} slept and recovered energy.");
         }
 
         //Mètode Eat() ja definit que utilitzen les sublclases de Pet, aquesta esta enllazada amb el mètode Use() de Food

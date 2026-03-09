@@ -6,19 +6,72 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        bool validPet;
+        int optionPet = -1;
+        string namePet;
+
         //1.Crearem primerament les stats de la mascota per despres ficarles a aquesta
         Stats initialStats = new Stats(100, 100);
-        Chick Kit = new Chick("Kit", EmotionalState.Happy, initialStats, true);
+        APet myPet = null;
 
         //2.Crearem el nostre inventari i ficarem menjar dins
         Inventory myInventory = new Inventory();
-        myInventory.AddItem(new Meal("Peix", 15));
-        myInventory.AddItem(new Snack("Galeta", 5));
+        myInventory.AddItem(new Meal("Fish", 15));
+        myInventory.AddItem(new Snack("Cookie", 5));
 
-        while (Kit.IsAlive)
+        //3.Escollir tipus de mascota
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("TAMAGOTCHI");
+        Console.ResetColor();
+        Console.WriteLine("Choose a pet:");
+        Console.WriteLine("1 - Cat");
+        Console.WriteLine("2 - Dog");
+        Console.WriteLine("3 - Chick");
+
+        do
         {
-            Kit.CheckStatus();
-            Draw(Kit);
+            validPet = true;
+            Console.Write("\nOption: ");
+            try
+            {
+                optionPet = int.Parse(Console.ReadLine());
+
+                if (optionPet < 1 || optionPet > 3) 
+                {
+                    Console.WriteLine("Invalid option. Try again.");
+                    validPet = false;
+                }
+            }
+            catch (Exception) 
+            {
+                Console.WriteLine("Error reding the input. Int type was espected");
+                validPet = false;
+            }
+        } while (!validPet);
+
+        //Choose a name for the pet
+        Console.WriteLine("Pet name:");
+        namePet = Console.ReadLine();
+
+        switch (optionPet) 
+        {
+            case 1:
+                myPet = new Cat(namePet, EmotionalState.Happy, initialStats, true);
+                break;
+            case 2:
+                myPet = new Dog(namePet, EmotionalState.Happy, initialStats, true);
+                break;
+            case 3:
+                myPet = new Chick(namePet, EmotionalState.Happy, initialStats, true);
+                break;
+
+        }
+
+        //Play area for interacting with the pet
+        while (myPet.IsAlive)
+        {
+            myPet.CheckStatus();
+            Draw(myPet);
 
             int option = -1;
             int optionItem = -1;
@@ -29,7 +82,7 @@ public class Program
             {
                 validInput = true;
 
-                Console.WriteLine("Escull una opció (1-4): ");
+                Console.WriteLine("Choose an option (1-4): ");
 
                 try
                 {
@@ -37,18 +90,18 @@ public class Program
 
                     if (option < 1 || option > 4)
                     {
-                        Console.WriteLine("Opció no vàlida. Introdueix una opció entre 1 i 4.");
+                        Console.WriteLine("Invalid option. Put a valid option between 1 to 4.");
                         validInput = false;
                     }
                 }
                 catch (FormatException)
                 {
-                    Console.WriteLine("S'ha de introduir un nombre.");
+                    Console.WriteLine("Invalid format, type int was expected.");
                     validInput = false;
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("Error al llegir opció escollida.");
+                    Console.WriteLine("Error reading!");
                     validInput = false;
                 }
             } while (!validInput);
@@ -68,7 +121,7 @@ public class Program
                             Console.WriteLine($"{index} -> {itemsAvailable.Name}");
                             index++;
                         }
-                        Console.WriteLine("Que vols donar a la teva mascota.");
+                        Console.WriteLine("What do you want to give your pet?");
 
                         do
                         {
@@ -79,41 +132,41 @@ public class Program
 
                                 if (optionItem < 1 || optionItem > myInventory.ItemsInventory.Length)
                                 {
-                                    Console.WriteLine("Opció no vàlida. Introdueix una opció valida");
+                                    Console.WriteLine("Error! Enter a valid option.");
                                     validItem = false;
                                 }
                             }
                             catch (Exception)
                             {
-                                Console.WriteLine("Opció incorrecte. Escull una de vàlida.");
+                                Console.WriteLine("Incorrect option. Choose a valid one.");
                                 validItem = false;
                             }
                         } while (!validItem);
 
                         AItem itemConsumed = myInventory.ItemsInventory[optionItem -1];
-                        itemConsumed.Use(Kit);
+                        itemConsumed.Use(myPet);
                     }
                     else
                     {
-                        Console.WriteLine("El inventari esta buit!");
+                        Console.WriteLine("The inventory is empty!");
                     }
                     break;
 
                 case 2:
-                    Kit.PetSleep();
+                    myPet.PetSleep();
                     break;
 
                 case 3:
-                    Kit.PetPlay();
+                    myPet.PetPlay();
                     break;
 
                 case 4:
-                    Console.WriteLine("Sortint del menú...");
+                    Console.WriteLine("Exiting the menu...");
                     return;
 
             }
 
-            Console.WriteLine("Pulsa Enter per a continuar...");
+            Console.WriteLine("Press Enter to continue...");
             Console.ReadLine();
         }
     }
@@ -123,11 +176,13 @@ public class Program
         Console.OutputEncoding = System.Text.Encoding.UTF8;
         Console.Clear();
 
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("╔════════════════════════════════╗");
         Console.WriteLine("║          TAMAGOTCHI            ║");
-        Console.WriteLine($"║    DateOfBirth: {new DateTime(1987, 01, 15):dd/MM/yyyy}     ║");
-        Console.WriteLine($"║\t   Type: {pet.GetType().Name.PadRight(15)}║");
+        Console.WriteLine($"║    DateOfBirth: {DateTime.Today.ToString("dd/MM/yyyy")}     ║");
+        Console.WriteLine($"║\t   Type: {pet.GetType().Name.PadRight(15)} ║");
         Console.WriteLine("╚════════════════════════════════╝");
+        Console.ResetColor();
 
         // Convertimos el Enum a String para el ASCII Art
         Console.WriteLine(pet.GetSprites(pet.PetState));
